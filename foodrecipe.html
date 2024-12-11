@@ -1,0 +1,465 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Mood App</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <style>
+    html {
+      box-sizing: border-box;
+    }
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
+
+    body {
+      padding: 0;
+      margin: 0;
+      font-family: "Open Sans", sans-serif;
+      background: linear-gradient(to bottom, #02342e,#4e8b7e,#c7ece6,#c5f3e9);
+      color: #fff;
+    }
+
+    .wrapper {
+      width: 90%;
+      margin: 1em auto;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 0.5em 2em 0.5em 2em;
+      border-radius: 20px;
+      box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .wrapper h1 {
+      font-family: Calibri, sans-serif;
+      font-weight: 500;
+      line-height: 1em;
+      text-align: center;
+      margin: 0;
+      font-size: 3em;
+    }
+
+    .wrapper h1 span {
+      font-size: 0.2em;
+      background: #16a085;
+      padding: 0.2em 0.5em;
+    }
+
+    .profiling-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+    }
+
+    .question {
+      margin: 0 1em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .question select {
+      border: none;
+      height: 2.2em;
+      width: 10em;
+      font-size: 0.9em;
+      box-sizing: 1px 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .submit-button {
+      display: flex;
+      justify-content: flex-end;
+      margin: 1em 0 0 0;
+    }
+
+    .submit-button input {
+      padding: 0.5em 4em;
+      margin: 1em 0;
+      font-size: 1em;
+      background: rgb(0, 0, 0, 0.5);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    .submit-button input:active {
+      background: #16a085;
+      box-shadow: none;
+      color: #000;
+    }
+    .wrapper {
+            width: 90%;
+            margin: 1em auto;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5em 2em;
+            border-radius: 20px;
+            box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+    .auth-buttons {
+            position: absolute;
+            top: 20px;
+            right: 50px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .auth-buttons button {
+            padding: 0.5em 1em;
+            font-size: 1em;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .auth-buttons button:hover {
+            background: #16a085
+        }
+
+        .auth-buttons button:active {
+            background: #fff;
+            color:#16a085;
+        }
+
+        .wrapper h1 {
+            font-family: Calibri, sans-serif;
+            font-weight: 500;
+            line-height: 1em;
+            text-align: center;
+            margin: 0;
+            font-size: 3em;
+        }
+
+    .display {
+      margin: 1em;
+      /* background: rgba(0, 0, 0, 0.2); */
+    }
+
+    .result-container {
+      margin: 1em;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      min-height: 100vh;
+    }
+
+    .pill {
+      color: #000;
+      height: fit-content;
+      width: min-content;
+      display: flex;
+      flex-direction: column;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 1em;
+      margin: 1em;
+      border-radius: 10px;
+      box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+    }
+
+    .pill>* {
+      margin: 0;
+      text-align: center;
+    }
+
+    .pill p {
+      margin-bottom: 1em;
+    }
+
+    .pill p.calories {
+      margin: 1em 0 0 0;
+    }
+
+    .pill .title {
+      font-size: 1.5em;
+      margin-bottom: 0.2em;
+    }
+
+    .pill span {
+      margin: 1em auto;
+      padding: 0.2em 0.5em;
+      background: rgb(11, 45, 97);
+      color: white;
+      text-align: center;
+      width: fit-content;
+    }
+
+    .pill .tags span {
+      margin: 0.5em auto;
+      border-radius: 5px;
+      margin-top: 0;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0.7em 0 0 0.7em;
+    }
+
+    .pill a {
+      text-decoration: none;
+      padding: 0.4em 1em 0.5em 1em;
+      background:#16a085;
+      width: fit-content;
+      margin: 0 auto;
+      color: white;
+      border-radius: 10px;
+      border: none;
+      transition: transform 0.2s ease-in-out;
+      transform: scaleX(0.95);
+    }
+
+    .pill a:hover {
+      transform: scaleX(1);
+    }
+
+    .pill ol {
+      margin-bottom: 0.5em;
+      background: rgba(255, 255, 255, 0.9);
+      height: 20vh;
+      overflow: scroll;
+    }
+
+    .pill li {
+      text-align: left;
+      padding-top: 0.2em;
+      margin-bottom: 0.2em;
+      /* display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-content: space-evenly; */
+    }
+
+    @media (min-width: 0px) and (max-width: 370px) {
+      .display {
+        background: none;
+      }
+
+      .submit-button {
+        justify-content: center;
+      }
+
+      .wrapper h1 span {
+        display: none;
+      }
+
+      .pill {
+        min-width: 280px;
+        max-width: 100%;
+      }
+
+      .pill {
+        font-size: 0.7em;
+      }
+
+      .pill ol {
+        height: unset;
+      }
+    }
+
+    @media (min-width: 800px) {
+      .wrapper {
+        width: 800px;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .wrapper {
+        width: 1200px;
+      }
+    }
+  /* Responsive styles for smaller screens */
+  @media (max-width: 600px) {
+            .auth-buttons {
+                top: 20px;
+                right: 70px;
+            }
+
+            .auth-buttons button {
+                padding: 0.4em 0.8em;
+                font-size: 0.9em;
+            }
+
+            .wrapper h1 {
+                font-size: 2em;
+                margin-top: 45px;
+            }
+        }
+    
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+       <!-- Login and Register buttons -->
+     <div class="auth-buttons">
+      <button id="loginButton"><a href="./login.html" style="color: #fff;">login</a></button>
+      <button id="registerButton"><a href="./regs.html" style="color: #fff;">register</a></button>
+  </div>
+    <h1>Food Mood</h1> 
+    
+    <div class="profiling-container">
+      <div class="question question1">
+        <p>Please select main recipe</p>
+        <select name="main" id="main">
+          <option value="beef">Beef</option>
+          <option value="chicken">Chicken</option>
+          <option value="duck">Duck</option>
+          <option value="lamb">Lamb</option>
+          <option value="seafood">Seafood</option>
+          <option value="turkey">Turkey</option>
+          <option value="vegan">Vegan</option>
+          <option value="fish">Fish</option>
+
+        </select>
+      </div>
+      <div class="question question2">
+        <p>Please select diet type</p>
+        <select name="diet" id="diet">
+          <option value="high-protein">High Protein</option>
+          <option value="low-fat">Low Fat</option>
+          <option value="low-carb">Low Carb</option>
+          <option value="high-fibre">High Fibre</option>
+          <option value="balanced">Balanced</option>
+        </select>
+      </div>
+
+      <div class="question question3">
+        <p>Please select desired preference </p>
+        <select name="heath" id="health">
+          <option value="alcohol-free">None</option>
+          <option value="sugar-conscious">Sugar-Conscious</option>
+          <option value="alcohol-free" selected>Alcohol-Free</option>
+          <option value="peanut-free">Peanut-Free</option>
+          <option value="tree-nut-free">Tree-Nut-Free</option>
+          <option value="vegetarian">Vegetarian</option>
+        </select>
+      </div>
+      <div class="question question4">
+        <p>Total cooking and prep time</p>
+        <select name="time" id="time">
+          <option value="20-">Less than 20mins</option>
+          <option value="30%2D">Less than 30mins</option>
+          <option value="45%2D">Less than 45mins</option>
+          <option value="60%2D">Less than 60mins</option>
+        </select>
+      </div>
+    </div>
+    <div class="submit-button">
+      <input type="button" value="Submit">
+    </div>
+
+  </div>
+  <div class="display">
+    <div class="result-container">
+      <ul class="ingredients">
+      </ul>
+    </div>
+  </div>
+  <script>
+    const recipeModule = (() => {
+
+      //PUBLIC NAMESPACING 
+
+      const mainSelection = document.querySelector('select[id="main"]');
+      const dietSelection = document.querySelector('select[id="diet"]');
+      const healthSelection = document.querySelector('select[id="health"]');
+      const timeSelection = document.querySelector('select[id="time"]');
+      const resultContainer = document.querySelector('.result-container');
+      const ingredients = document.querySelector('.ingredients');
+
+      //PRIVATE NAMESPACING
+
+      return {
+        //HANDLE SUBMIT FUNCTION
+        handleSubmit: function (e) {
+          e.preventDefault();
+          //Get values from all selects
+          const mainValue = mainSelection.value;
+          const dietValue = dietSelection.value;
+          const healthValue = healthSelection.value;
+          //call 
+          this.handleFetch(mainValue, dietValue, healthValue);
+        },
+
+        //FETCH ASYNC FUNCTION
+        // 1. validte the response.
+        // - if hits > 0, then process, otherwise, display message no hits
+        handleFetch: async function (mainValue, dietValue, healthValue) {
+          const dataRequest = await fetch(`https://api.edamam.com/search?q=${mainValue}&app_id=08ab47ee&app_key=fa5814a32eb2669676885dff6d983c44&health=${healthValue}&diet=${dietValue}&to=30`);
+          const dataResponse = await dataRequest.json()
+          console.log(dataResponse);
+          const dataResults = dataResponse.hits;
+
+          this.render(dataResults);
+        },
+
+
+        //LOOP THROUGH RESULTS
+        render: function (data) {
+          const html = data.map((item) => {
+            return this.renderResult(item);
+          }).join('');
+          //
+          resultContainer.innerHTML = html;
+        },
+
+        // return a <li> item
+        renderResult: function (data) {
+          //Title 
+          const title = data.recipe.label;
+          //Labels
+          const label = data.recipe.dietLabels.map(tag => {
+            return `<span>${tag}</span>`
+          }).join('');
+          //Image
+          const image = data.recipe.image;
+          //Tags
+          const tags = data.recipe.healthLabels.map(tag => {
+            return `<span>${tag}</span>`
+          }).join('');
+
+          // Calories 
+          const calories = data.recipe.calories;
+          //Ingredients
+
+          const ingred = data.recipe.ingredientLines.map(ingredient => {
+            return `<li class="ingredient">${ingredient}</li>`;
+          }).join('');
+
+          //Link
+          const link = data.recipe.url;
+
+          return ` 
+            <div class="pill">
+            <p class="title">${title}</p>
+            <span class="label">${label}</span>
+            <img src="${image}" alt="Recipe Image">
+            <div class="tags">${tags}</div>
+            <ol>
+            ${ingred}
+            </ol>
+            <a href="${link}" target="_blank">Go to recipe</a>
+            </div>
+            `
+        }
+      }
+
+    })();
+
+    const submitButton = document.querySelector('input[type="button"]');
+    submitButton.addEventListener('click', recipeModule.handleSubmit.bind(recipeModule));
+  </script>
+</body>
+
+</html>
